@@ -14,6 +14,37 @@
   let pieceTheme = '../assets/chessPieces/{piece}.png'
   var game = new Chess()
 
+  const onDragStart = function (source, piece, position, orientation) {
+    // do not pick up pieces if the game is over
+    if (game.game_over()) return false
+
+    // check if is your piece
+    if(orientation[0] !== piece[0]) return false 
+  }
+
+  const onDrop = function (source, target) {
+    let move = {
+      from: source,
+      to: target,
+      promotion: 'q'
+    }
+
+    // see if the move is legal
+    var valid = game.move(move)
+
+    // back to source position
+    if (!valid) return 'snapback'
+
+    coon.send(JSON.stringify(move))
+    updateStatus()
+  }
+
+  // update the board position after the piece snap
+  // for castling, en passant, pawn promotion
+  const onSnapEnd = function () {
+    board.position(game.fen())
+  }
+
   connectButton.addEventListener("click", () =>{
     if(!idInput.value) return
 
@@ -37,9 +68,9 @@
       draggable: true,
       position: 'start',
       orientation: piecesColor,
-      onDragStart: onDragStart,
-      onDrop: onDrop,
-      onSnapEnd: onSnapEnd
+      onDragStart,
+      onDrop,
+      onSnapEnd,
     }
     board = Chessboard('myBoard', config)
     updateStatus()
@@ -65,44 +96,11 @@
     });
   }
 
-
   // ------------- chess logic -------------
-
-  function onDragStart (source, piece, position, orientation) {
-    // do not pick up pieces if the game is over
-    if (game.game_over()) return false
-
-    // check if is your piece
-    if(orientation[0] !== piece[0]) return false 
-  }
-
   function doMove(move){
     game.move(move)
     board.position(game.fen())
     updateStatus()
-  }
-
-  function onDrop (source, target) {
-    let move = {
-      from: source,
-      to: target,
-      promotion: 'q'
-    }
-
-    // see if the move is legal
-    var valid = game.move(move)
-
-    // back to source position
-    if (!valid) return 'snapback'
-
-    coon.send(JSON.stringify(move))
-    updateStatus()
-  }
-
-  // update the board position after the piece snap
-  // for castling, en passant, pawn promotion
-  function onSnapEnd () {
-    board.position(game.fen())
   }
 
   function updateStatus () {
