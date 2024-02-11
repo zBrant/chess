@@ -62,8 +62,9 @@ html, body{
   position: relative;
   z-index: 2;
 
-  transform: translateX(20rem);
-  transition: transform .2s ease;
+/* transform: translateX(20rem);*/
+ transition: transform .2s ease;
+
 }
 
 .menu-title{
@@ -131,31 +132,8 @@ html, body{
 } 
 
 .game{
-  z-index: 1;
-  background-color: color-mix(in srgb, var(--menu-backgroud-dark) , transparent 10%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem;
-  padding: .8rem;
-  overflow: hidden;
-  transition: opacity 3s ease;
   opacity: 0;
+  border-radius: 20px;
+  transition: opacity .8s ease;
 }
 
-.chessboard{
-  display: grid;
-  grid-template-columns: repeat(8, 65px);
-  grid-template-rows: repeat(8, 65px);
-  gap: 2px;
-  border-radius: .8rem;
-  overflow: hidden;
-}
-
-.white-square{
-  background-color: rgb(255, 255, 255, .8);
-}
-
-.black-square{
-  background-color: rgb(0, 0, 0, .8);
-}

@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chess</title>
-  <link rel="stylesheet" href="./styles/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+
 </head>
 <body>
   <main class="main-background">
     <div class="menu">
       <img src="./assets/horse.png" alt="game logo">
       <h2 class="menu-title">Chess</h2>
-      <form action="#">
+      <form>
         <div class="input-menu">
           <label for="userID">Your section ID</label>
           <input type="text" id="userID" readonly value="2p4b2h9k3m8s9dc82p4b2">
@@ -23,84 +26,17 @@
           <label for="friendID">Enter your friend's section ID</label>
           <input type="text" id="friendID" required autofocus>
         </div>
-        <button value="submit" id="connect">Connect</button>
+        <button type="button" id="connect">Connect</button>
       </form>
     </div>
 
-    <div class="game">
-      <div class="chessboard">
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-        <div class="square black-square"></div>
-        <div class="square white-square"></div>
-    </div>
+    <div class="game" id="myBoard" style="width: 500px"></div>
   </main>
 
-  <script src="./scripts/script.js"></script>
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  <script src="https://chessboardjs.com/js/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js" integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js" integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz" crossorigin="anonymous"></script>
+  <script src="./scripts/game.js"></script>
 </body>
 </html>
