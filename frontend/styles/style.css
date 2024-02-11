@@ -62,9 +62,8 @@ html, body{
   position: relative;
   z-index: 2;
 
-/* transform: translateX(20rem);*/
- transition: transform .2s ease;
-
+  transform: translateX(20rem);
+  transition: transform .2s ease;
 }
 
 .menu-title{
@@ -111,11 +110,10 @@ html, body{
   border: none;
   outline: none;
   padding: 0;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 700;
   background-color: transparent;
   color: white;
-  text-transform: uppercase;
 }
 
 .menu button{
@@ -133,7 +131,6 @@ html, body{
 
 .game{
   opacity: 0;
-  border-radius: 20px;
-  transition: opacity .8s ease;
+  transition: opacity 3s ease;
 }
 

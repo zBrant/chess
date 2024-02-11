@@ -3,6 +3,7 @@
   const chessDiv = document.querySelector(".game")
   const menu = document.querySelector(".menu")
   const idInput = document.getElementById("friendID") 
+  const idUser = document.getElementById("userID")
 
   // connection vars
   let peer = new Peer();
@@ -21,12 +22,10 @@
     showBoard()
   })
 
-
-
- function showBoard(){
-   chessDiv.style.opacity = 1
-   menu.style.transform = "translateX(0)"
- }
+  function showBoard(){
+    chessDiv.style.opacity = 1
+    menu.style.transform = "translateX(0)"
+  }
 
   function connect(value){
     coon = peer.connect(value)
@@ -48,6 +47,7 @@
 
   function connection(){
     peer.on('open', () =>{
+      idUser.value = peer.id
       console.log(peer.id)
     });
 
@@ -134,12 +134,12 @@
     console.log(game.fen())
     console.log(game.pgn())
 
-//   $status.html(status)
-//   $fen.html(game.fen())
-//   $pgn.html(game.pgn())
-// var $status = $('#status')
-// var $fen = $('#fen')
-// var $pgn = $('#pgn')
+    //   $status.html(status)
+    //   $fen.html(game.fen())
+    //   $pgn.html(game.pgn())
+    // var $status = $('#status')
+    // var $fen = $('#fen')
+    // var $pgn = $('#pgn')
   }
 
   connection()
